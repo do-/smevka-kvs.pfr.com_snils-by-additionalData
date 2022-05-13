@@ -27,38 +27,22 @@ get_request_of_snils_by_additional_data:
 get_response_of_snils_by_additional_data:
 
     function () {
-    
-//    	let {rq: {data}} = this
+
+    	const {rq: {data}} = this
+
+    	let Snils = '', sum = 0; for (let i = 9; i > 0; i --) {
     	
-    	return {
+    		const d = Math.floor (Math.random () * 10)
+    		
+    		Snils += d
+    		
+    		sum += i * d
     	
-			SnilsByAdditionalDataResponse: {
-
-				FamilyName: "ИВАНОВ",
-				FirstName: "ИВАН",
-				Patronymic: "ИВАНОВИЧ",
-				Snils: "00000601555",
-				BirthDate: "1967-05-21",
-				Gender: "Male",
-
-				BirthPlace: {
-					PlaceType: "ОСОБОЕ",
-					Settlement: "ЗАГОРСК",
-					District: "ЛЕНИНСКИЙ",
-					Region: "МОСКОВСКАЯ ОБЛАСТЬ",
-					Country: "РФ",
-				},
-
-				PassportRF: {
-					Series: "0005",
-					Number: "777777",
-					IssueDate: "1986-06-13",
-					Issuer: "ОВД",
-				},
-
-			},
-
     	}
+    	
+    	Snils += String ((sum % 101) % 100).padStart (2, '0')
+    
+    	return {SnilsByAdditionalDataResponse: {...data, Snils}}
 
     },
         
